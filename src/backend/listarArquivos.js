@@ -16,6 +16,4 @@ function listarArquivosDoDiretorio(diretorio, arquivos) {
 	return arquivos;
 }
 
-let arquivos = listarArquivosDoDiretorio('src/media');
-
-console.log(arquivos);
+module.exports = listarArquivosDoDiretorio;
