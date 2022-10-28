@@ -1,0 +1,27 @@
+{
+	"name": "mural-ifba",
+	"version": "1.0.0",
+	"description": "Projeto desenvolvido para proporcionar sliders dinamicos para as televisões do ifba, proporcionando a publicação e disseminação facilitada de conteúdos dentro do campus(VCA).",
+	"main": "index.js",
+	"scripts": {
+		"start": "nodemon /src/backend/index.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/davi-miguel-sm/mural-ifba.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/davi-miguel-sm/mural-ifba/issues"
+	},
+	"homepage": "https://github.com/davi-miguel-sm/mural-ifba#readme",
+	"dependencies": {
+		"body-parser": "1.20.1",
+		"cors": "2.8.5",
+		"express": "4.18.2",
+		"morgan": "1.10.0",
+		"nodemon": "2.0.20"
+	}
+}
