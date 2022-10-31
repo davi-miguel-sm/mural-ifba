@@ -1,14 +1,12 @@
 const axios = require('axios');
-let urlAPI = 'http://localhost:31568/',
-	objeto;
-
-function pegarConteudoDeAPI(caminho) {
-	return axios.get(caminho);
+async function getDados() {
+	try {
+		const resposta = await axios.get('http://localhost:31568');
+		const dados = await resposta.data;
+		return dados;
+	} catch (err) {
+		console.log('Gerou o err: ' + err);
+	}
 }
 
-pegarConteudoDeAPI(urlAPI).then((resposta) => {
-	const data = reposta.data;
-	const modulo = data.map((elemento) => {
-		return elemento.split('/')[1];
-	});
-});
+module.exports = getDados;
