@@ -19,4 +19,8 @@ for (let modulo of arrayModulos) {
 	}
 }
 
-module.exports = objModuloCaminho;
+let resultado = Object.keys(objModuloCaminho).map((key) => {
+	return [key, objModuloCaminho[key]];
+});
+
+module.exports = resultado;

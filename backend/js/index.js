@@ -8,7 +8,7 @@ app.use(express.json());
 app.use(cors());
 
 app.get('/', (req, res) => {
-	return res.json(objModuloCaminho);
+	return Array.from(res.json(objModuloCaminho));
 });
 
 app.listen(31568, () => {
