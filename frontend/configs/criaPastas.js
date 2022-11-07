@@ -1,8 +1,11 @@
 const fs = require('fs');
 const pegarDados = require('./tratandoApi');
-const criaHTML = require('./criaHtml');
-const criaJS = require('./criaJS');
-const criaCSS = require('./criaCss');
+const criaHTML = require('./criaArquivos/criaHtml');
+const criaJS = require('./criaArquivos/criaJS');
+const criaCSS = require('./criaArquivos/criaCSS');
+const criaIndexHtml = require('./criaArquivos/criaIndexHTML');
+const criaStylesCSS = require('./criaArquivos/criaStylesCSS');
+const criaIndexJS = require('./criaArquivos/criaIndexJS');
 
 async function criaPastas() {
 	const dados = await pegarDados();
@@ -10,23 +13,26 @@ async function criaPastas() {
 	for (let i = 0; i < dados.length; i++) {
 		modulos.push(dados[i][0]);
 	}
-	const path = './slider';
+	const path = '../../slider';
 	try {
-		for (let modulo of modulos) {
-			if (!fs.existsSync(`${path}`)) {
-				fs.mkdirSync(`${path}`);
+		if (!fs.existsSync(`${path}`)) {
+			fs.mkdirSync(`${path}`);
+			fs.writeFileSync(`${path}/index.html`, criaIndexHtml());
+			fs.writeFileSync(`${path}/styles.css`, criaStylesCSS());
+			fs.writeFileSync(`${path}/index.js`, criaIndexJS());
+		}
+		for (let counter = 0; counter < modulos.length; counter++) {
+			if (!fs.existsSync(`${path}/${modulos[counter]}`)) {
+				fs.mkdirSync(`${path}/${modulos[counter]}`);
 			}
-			if (!fs.existsSync(`${path}/${modulo}`)) {
-				fs.mkdirSync(`${path}/${modulo}`);
+			if (!fs.existsSync(`${path}/${modulos[counter]}/index.html`)) {
+				fs.writeFileSync(`${path}/${modulos[counter]}/index.html`, criaHTML());
 			}
-			if (!fs.existsSync(`${path}/${modulo}/index.html`)) {
-				fs.writeFileSync(`${path}/${modulo}/index.html`, criaHTML());
+			if (!fs.existsSync(`${path}/${modulos[counter]}/index.js`)) {
+				fs.writeFileSync(`${path}/${modulos[counter]}/index.js`, criaJS(counter));
 			}
-			if (!fs.existsSync(`${path}/${modulo}/index.js`)) {
-				fs.writeFileSync(`${path}/${modulo}/index.js`, criaJS());
-			}
-			if (!fs.existsSync(`${path}/${modulo}/styles.css`)) {
-				fs.writeFileSync(`${path}/${modulo}/styles.css`, criaCSS());
+			if (!fs.existsSync(`${path}/${modulos[counter]}/styles.css`)) {
+				fs.writeFileSync(`${path}/${modulos[counter]}/styles.css`, criaCSS());
 			}
 		}
 	} catch (err) {

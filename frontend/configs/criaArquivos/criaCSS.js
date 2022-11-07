@@ -1,6 +1,6 @@
 function criaCSS() {
 	return `
-    * {
+* {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
@@ -41,8 +41,7 @@ body {
 #slider video.selected {
 	display: block;
 }
-
-    `;
+`;
 }
 
 module.exports = criaCSS;
