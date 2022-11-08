@@ -1,5 +1,21 @@
 function criaJS(numero) {
-	return `
+	return `const btn = document.querySelector('button');
+
+btn.addEventListener('click', () => {
+	const i = document.querySelector('#fullscreen');
+	const html = document.querySelector('html');
+	if (i.classList.contains('fa-maximize')) {
+		html.requestFullscreen();
+		i.classList.remove('fa-maximize');
+		i.classList.add('fa-minimize');
+	} else {
+		document.exitFullscreen();
+		i.classList.remove('fa-minimize');
+		i.classList.add('fa-maximize');
+	}
+});
+
+
 const respostaAPI = fetch('http://localhost:31568')
 	.then((r) => r.json())
 	.then((data) => {
@@ -82,8 +98,7 @@ window.onload = async () => {
 		console.log('Iniciando...');
 		demo();
 	})();
-};
-`;
+};`;
 }
 
 module.exports = criaJS;

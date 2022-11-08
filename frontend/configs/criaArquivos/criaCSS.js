@@ -1,6 +1,5 @@
 function criaCSS() {
-	return `
-* {
+	return `* {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
@@ -41,7 +40,24 @@ body {
 #slider video.selected {
 	display: block;
 }
-`;
+
+.btn {
+	background-color: grey;
+	position: fixed;
+	bottom: 0.5rem;
+	right: 0.5rem;
+	width: 2rem;
+	height: 2rem;
+	font-size: 1.5rem;
+}
+
+.btn:hover {
+	background-color: #009f3b;
+}
+
+.btn:active {
+	background-color: #b61b15;
+}`;
 }
 
 module.exports = criaCSS;

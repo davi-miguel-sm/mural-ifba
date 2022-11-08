@@ -13,10 +13,12 @@ function criaHTML() {
 	</head>
 	<body>
 		<main id="slider"></main>
+		<button class="btn">
+			<i id="fullscreen" class="fa-solid fa-maximize"></i>
+		</button>
 	</body>
 	<script src="index.js"></script>
-</html>
-`;
+</html>`;
 }
 
 module.exports = criaHTML;
